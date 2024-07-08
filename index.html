@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="libdebug is a Python library to debug binary executables, your own way">
     <title>libdebug</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         body {
             display: flex;
@@ -14,7 +15,7 @@
             height: 100vh;
             margin: 0;
             background-color: #ffffef;
-            font-family: "Nunito", sans-serif;
+            font-family: "Nunito", Arial, sans-serif;
         }
         .container {
         text-align: center;
@@ -67,6 +68,16 @@
             } else {
                 vertImage.setAttribute("loading", "lazy");
             }
+
+            var link = document.createElement('link');
+            link.href = 'https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap';
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            document.head.appendChild(link);
+
+            link.onload = function() {
+                document.body.style.fontFamily = '"Nunito", Arial, sans-serif';
+            };
         });
     </script>
 </head>
