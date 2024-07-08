@@ -27,18 +27,6 @@
             justify-content: center;
             align-items: center;
         }
-        .logo {
-            max-width: 600px;
-            margin-bottom: 20px;
-            display: none;   /* Hide initially */
-        }
-        .logo-vertical
-        {
-            max-height: 300px;
-            margin-bottom: 20px;
-            display: none;   /* Hide initially */
-        }
-        .logo { display: block; } /* Show horizontal logo initially */
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
@@ -53,17 +41,43 @@
             width: 30px;
             margin-right: 10px;
         }
+        .logo {
+            max-width: 600px;
+            display: none; 
+        }
+        .logo-vertical {
+            max-height: 300px;
+            display: none;
+        }
+        @media (orientation: landscape) {
+            .logo { display: block; }
+        }
         @media (orientation: portrait) {
-            .logo { display: none; }
-            .logo-vertical { display: block; } /* Ensure this is visible in portrait */
+            .logo-vertical { display: block; }
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let horizImage = document.getElementById("logo-horiz");
+            let vertImage = document.getElementById("logo-vert");
+
+            if (window.matchMedia("(orientation: portrait)").matches) {
+                horizImage.setAttribute("loading", "lazy");
+            } else {
+                vertImage.setAttribute("loading", "lazy");
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <a href="https://github.com/libdebug/libdebug">
-            <img src="./images/libdebug_logo_horiz.webp" alt="libdebug Logo" class="logo">
-            <img src="./images/libdebug_logo_vert.webp" alt="libdebug Logo Vertical" class="logo-vertical">
+            <picture>
+                <source srcset="./images/libdebug_logo_vert.webp" media="(orientation: portrait)">
+                <source srcset="./images/libdebug_logo_horiz.webp" media="(orientation: landscape)">
+                <img id="logo-horiz" src="./images/libdebug_logo_horiz.webp" alt="libdebug Logo" class="logo">
+                <img id="logo-vert" src="./images/libdebug_logo_vert.webp" alt="libdebug Logo Vertical" class="logo-vertical">
+            </picture>
         </a>
         <p>
             A Python library to debug binary executables, your own way.
