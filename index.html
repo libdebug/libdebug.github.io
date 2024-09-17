@@ -28,6 +28,7 @@
             justify-content: center;
             align-items: center;
             flex: 1;
+            padding: 2em;
         }
         .logo-container {
             margin-top: 7em;
@@ -38,7 +39,7 @@
         }
         .logo {
             max-width: 15em;
-            height: auto;
+            max-height: 15em;
         }
         .logo-text {
             font-weight: bold;
@@ -79,6 +80,22 @@
                 margin-bottom: 3em; /* Adjust margin as needed */
             }
         }
+        @media (max-width: 480px) {
+            p {
+                font-size: 1.2em;
+            } 
+            .logo-text {
+                font-size: 4em;
+            }
+            .logo {
+                max-width: 10em;
+                max-height: 10em;
+            }
+            .btn img {
+                width: 40px;
+                height: 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -107,8 +124,5 @@
             A Python library to debug binary executables, your own way.
         </p>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
